@@ -3,9 +3,6 @@ package com.cobsweden.learn.tacocloud.jdbc;
 import com.cobsweden.learn.tacocloud.db.OrderRepository;
 import com.cobsweden.learn.tacocloud.model.Order;
 import com.cobsweden.learn.tacocloud.model.Taco;
-import com.fasterxml.jackson.databind.ObjectMapper;
-import com.fasterxml.jackson.databind.json.JsonMapper;
-import com.fasterxml.jackson.datatype.jsr310.JavaTimeModule;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.jdbc.core.simple.SimpleJdbcInsert;
@@ -21,20 +18,16 @@ public class OrderRepositoryJdbc implements OrderRepository {
 
   private final SimpleJdbcInsert orderTacoInserter;
 
-  private final ObjectMapper objectMapper;
 
   @Autowired
   public OrderRepositoryJdbc(JdbcTemplate jdbc) {
     this.orderInserter = new SimpleJdbcInsert(jdbc).withTableName("taco_order").usingGeneratedKeyColumns("id");
     this.orderTacoInserter = new SimpleJdbcInsert(jdbc).withTableName("taco_order_tacos");
-    this.objectMapper = JsonMapper.builder()
-        .addModule(new JavaTimeModule())
-        .build();
   }
 
   @Override
   public Order save(Order order) {
-    order.setCreated_at(LocalDateTime.now());
+    order.setCreatedAt(LocalDateTime.now());
     Long orderId = saveOrderDetails(order);
     order.setId(orderId);
 
@@ -45,8 +38,16 @@ public class OrderRepositoryJdbc implements OrderRepository {
   }
 
   private long saveOrderDetails(Order order) {
-    Map<String, Object> values = objectMapper.convertValue(order, Map.class);
-    values.put("created_at", order.getCreated_at());
+    Map<String, Object> values = Map.of(
+        "order_name", order.getOrderName(),
+        "order_street", order.getOrderStreet(),
+        "order_postal_code", order.getOrderPostalCode(),
+        "order_postal_address", order.getOrderPostalAddress(),
+        "cc_number", order.getCcNumber(),
+        "cc_expiration", order.getCcExpiration(),
+        "cc_Cvv", order.getCcCVV(),
+        "created_at", order.getCreatedAt()
+    );
     return orderInserter.executeAndReturnKey(values).longValue();
   }
 

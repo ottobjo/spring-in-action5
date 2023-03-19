@@ -30,7 +30,7 @@ class OrderTest {
   @Test
   void getCcCVV() {
     Order uut = newOrder();
-    uut.setCc_expiration("11/22");
+    uut.setCcExpiration("11/22");
 
     Set<ConstraintViolation<Order>> violations = validator.validate(uut);
     assertTrue(violations.isEmpty(), "errors + " + violations);
@@ -39,13 +39,13 @@ class OrderTest {
 
   Order newOrder() {
     return Order.builder()
-        .order_name("a")
-        .order_street("b")
-        .order_postal_code("1")
-        .order_postal_address("city")
-        .cc_expiration("123")
-        .cc_expiration("01/22")
-        .cc_CVV("123")
+        .orderName("a")
+        .orderStreet("b")
+        .orderPostalCode("1")
+        .orderPostalAddress("city")
+        .ccExpiration("123")
+        .ccExpiration("01/22")
+        .ccCVV("123")
         .build();
   }
 }

@@ -22,28 +22,28 @@ public class Order {
 
   private Long id;
 
-  private LocalDateTime created_at;
+  private LocalDateTime createdAt;
 
   @NotBlank(message = "Name is required")
-  private String order_name;
+  private String orderName;
 
   @NotBlank(message = "Street is required")
-  private String order_street;
+  private String orderStreet;
 
   @Digits(integer = 5, fraction = 0, message = "Postal code are five digits with no space")
-  private String order_postal_code;
+  private String orderPostalCode;
 
   @NotBlank(message = "Postal city is required")
-  private String order_postal_address;
+  private String orderPostalAddress;
 
   @CreditCardNumber(message = "Not a valid credit card number")
-  private String cc_number;
+  private String ccNumber;
 
   @Pattern(regexp = "^(0[1-9]|1[0-2])([\\/])([1-9][0-9])$", message = "Must be formatted MM/YY")
-  private String cc_expiration;
+  private String ccExpiration;
 
   @Digits(integer = 3, fraction = 0, message = "Invalid CVV")
-  private String cc_CVV;
+  private String ccCVV;
 
   private final List<Taco> tacos = new ArrayList<>();
 
