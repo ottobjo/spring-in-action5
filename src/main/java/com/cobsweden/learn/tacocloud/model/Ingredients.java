@@ -9,7 +9,6 @@ import java.util.stream.Stream;
 public class Ingredients {
   List<Ingredient> ingredientList;
 
-
   public List<Ingredient> ofType(Ingredient.Type type) {
     return ingredientList.stream()
         .filter(e -> e.getType().equals(type))
@@ -21,4 +20,5 @@ public class Ingredients {
         .map(Ingredient::getType)
         .distinct();
   }
+
 }
