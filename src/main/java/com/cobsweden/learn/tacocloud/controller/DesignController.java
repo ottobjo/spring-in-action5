@@ -51,7 +51,6 @@ class DesignController {
       addIngredients(model);
       return "design";
     }
-
     Taco savedTaco = tacoService.save(taco);
     order.addTaco(savedTaco);
     return "redirect:/orders/current";

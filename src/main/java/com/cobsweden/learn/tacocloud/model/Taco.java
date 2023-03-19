@@ -28,4 +28,5 @@ public class Taco implements ModelObject {
   public boolean has(Ingredient ingredient) {
     return ingredientIds.contains(ingredient.getId());
   }
+
 }

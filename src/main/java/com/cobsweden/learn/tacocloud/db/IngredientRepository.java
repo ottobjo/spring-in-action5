@@ -11,4 +11,5 @@ public interface IngredientRepository {
   Ingredient findOne(String id);
 
   Ingredient save(Ingredient ingredient);
+
 }

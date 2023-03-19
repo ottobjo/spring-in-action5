@@ -33,7 +33,6 @@ class OrderController {
     if (errors.hasErrors()) {
       return "orderForm";
     }
-
     tacoService.save(order);
     sessionStatus.setComplete();
     log.info("Order submitted: {}", order);
