@@ -1,6 +1,6 @@
 package com.cobsweden.learn.tacocloud.jdbc;
 
-import com.cobsweden.learn.tacocloud.db.TacoRepository;
+import com.cobsweden.learn.tacocloud.model.Ingredient;
 import com.cobsweden.learn.tacocloud.model.Taco;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.jdbc.core.JdbcTemplate;
@@ -30,8 +30,8 @@ public class TacoRepositoryJdbc implements TacoRepository {
     Long tacoId = saveTaco(taco);
     taco.setId(tacoId);
 
-    for(String ingredientId : taco.getIngredientIds()) {
-      saveIngredientToTaco(ingredientId, tacoId);
+    for(Ingredient ingredient : taco.getIngredients()) {
+      saveIngredientToTaco(ingredient.getId(), tacoId);
     }
     return taco;
   }

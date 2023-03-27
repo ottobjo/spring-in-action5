@@ -1,19 +1,30 @@
 package com.cobsweden.learn.tacocloud.model;
 
-import lombok.Builder;
-import lombok.Data;
-import lombok.RequiredArgsConstructor;
+import jakarta.persistence.Entity;
+import jakarta.persistence.EnumType;
+import jakarta.persistence.Enumerated;
+import jakarta.persistence.Id;
+import lombok.*;
+
+import java.io.Serial;
+import java.io.Serializable;
 
 @Data
 @Builder
-@RequiredArgsConstructor
-public class Ingredient {
+@AllArgsConstructor
+@NoArgsConstructor(access = AccessLevel.PACKAGE, force = true)
+@Entity
+public class Ingredient implements Serializable {
+  @Serial
+  private static final long serialVersionUID = 1L;
 
-  private final String id;
+  @Id
+  private String id;
 
-  private final String name;
+  private String name;
 
-  private final Type type;
+  @Enumerated(EnumType.STRING)
+  private Type type;
 
   public enum Type {
     WRAP, PROTEIN, VEGGIES, CHEESE, SAUCE;

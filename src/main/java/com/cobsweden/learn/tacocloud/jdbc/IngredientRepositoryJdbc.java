@@ -1,6 +1,5 @@
 package com.cobsweden.learn.tacocloud.jdbc;
 
-import com.cobsweden.learn.tacocloud.db.IngredientRepository;
 import com.cobsweden.learn.tacocloud.model.Ingredient;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.jdbc.core.JdbcTemplate;

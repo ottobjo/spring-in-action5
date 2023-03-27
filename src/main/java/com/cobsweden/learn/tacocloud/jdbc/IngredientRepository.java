@@ -1,4 +1,4 @@
-package com.cobsweden.learn.tacocloud.db;
+package com.cobsweden.learn.tacocloud.jdbc;
 
 import com.cobsweden.learn.tacocloud.model.Ingredient;
 

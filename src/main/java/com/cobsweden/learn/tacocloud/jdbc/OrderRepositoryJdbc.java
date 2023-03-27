@@ -1,6 +1,5 @@
 package com.cobsweden.learn.tacocloud.jdbc;
 
-import com.cobsweden.learn.tacocloud.db.OrderRepository;
 import com.cobsweden.learn.tacocloud.model.Order;
 import com.cobsweden.learn.tacocloud.model.Taco;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -28,7 +27,7 @@ public class OrderRepositoryJdbc implements OrderRepository {
   @Override
   public Order save(Order order) {
     order.setCreatedAt(LocalDateTime.now());
-    Long orderId = saveOrderDetails(order);
+    long orderId = saveOrderDetails(order);
     order.setId(orderId);
 
     for (Taco taco : order.getTacos()) {
