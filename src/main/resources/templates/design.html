@@ -11,6 +11,7 @@
 <h1>Design your taco!</h1>
 <img th:src="@{/images/TacoCloud.png}" alt="site logotype"/>
 
+<!--/*@thymesVar id="taco" type="com.cobsweden.learn.tacocloud.model.Taco"*/-->
 <form method="post" th:object="${taco}">
 
   <div class="grid">
@@ -67,7 +68,7 @@
 
   <div th:if="${#fields.hasAnyErrors()}">
     <ul>
-      <lh><span class="validationError">Please correct errors and resubmit</span></lh>
+      <li><span class="validationError">Please correct errors and resubmit</span></li>
       <li th:each="err : ${#fields.allErrors()}" th:text="${err}" />
     </ul>
   </div>

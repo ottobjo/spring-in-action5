@@ -4,9 +4,10 @@
       lang="en">
 <head>
   <title>Taco Cloud</title>
-  <link ref="stykesheet" th:href="@{/style.css}">
+  <link rel="stylesheet" th:href="@{/style.css}">
 </head>
 <body>
+<!--/*@thymesVar id="order" type="com.cobsweden.learn.tacocloud.model.Order"*/-->
 <form method="post" th:action="@{/orders}" th:object="${order}">
   <h1>Order your taco creations!</h1>
 
@@ -20,43 +21,44 @@
   </div>
 
   <h3>Deliver my taco masterpiece to...</h3>
-  <label for="orderName">Name: </label>
-  <input type="text" th:field="*{orderName}">
+  <label for="name">Name: </label>
+  <input id="name" type="text" th:field="*{orderName}">
   <span class="validationError" th:if="${#fields.hasErrors('orderName')}" th:errors="*{orderName}">Name Error</span>
   <br/>
 
-  <label for="orderStreet">Street address: </label>
-  <input type="text" th:field="*{orderStreet}">
+  <label for="street">Street address: </label>
+  <input id="street" type="text" th:field="*{orderStreet}">
   <span class="validationError" th:if="${#fields.hasErrors('orderStreet')}" th:errors="*{orderStreet}">Street Error</span>
   <br/>
 
-  <label for="orderPostalCode">Postal code: </label>
-  <input type="text" th:field="*{orderPostalCode}">
+  <label for="postalCode">Postal code: </label>
+  <input id="postalCode" type="text" th:field="*{orderPostalCode}">
   <span class="validationError" th:if="${#fields.hasErrors('orderPostalCode')}" th:errors="*{orderPostalCode}">Postal code Error</span>
   <br/>
 
-  <label for="orderPostalAddress">Postal city: </label>
-  <input type="text" th:field="*{orderPostalAddress}">
+  <label for="postalAddress">Postal city: </label>
+  <input id="postalAddress" type="text" th:field="*{orderPostalAddress}">
   <span class="validationError" th:if="${#fields.hasErrors('orderPostalAddress')}" th:errors="*{orderPostalAddress}">Postal address Error</span>
   <br/>
 
-  <h3>Heres how I'll pay... ex: 5555555555554444</h3>
+  <h3>Heres how I'll pay...</h3>
   <label for="ccNumber">Credit card#: </label>
-  <input type="text" th:field="*{ccNumber}">
+  <input id="ccNumber" type="text" th:field="*{ccNumber}">
   <span class="validationError" th:if="${#fields.hasErrors('ccNumber')}" th:errors="*{ccNumber}">CC Number Error</span>
   <br/>
 
   <label for="ccExpiration">Expiration: </label>
-  <input type="text" th:field="*{ccExpiration}">
+  <input id="ccExpiration" type="text" th:field="*{ccExpiration}">
   <span class="validationError" th:if="${#fields.hasErrors('ccExpiration')}" th:errors="*{ccExpiration}">CC Expiration Error</span>
   <br/>
 
   <label for="ccCVV">CVV: </label>
-  <input type="text" th:field="*{ccCVV}">
+  <input id="ccCVV" type="text" th:field="*{ccCVV}">
   <span class="validationError" th:if="${#fields.hasErrors('ccCVV')}" th:errors="*{ccCVV}">CC Num Error</span>
   <br/>
 
   <input type="submit" value="Submit order">
+
 </form>
 </body>
 </html>

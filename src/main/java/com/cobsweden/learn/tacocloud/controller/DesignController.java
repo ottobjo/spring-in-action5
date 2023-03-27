@@ -18,6 +18,7 @@ import org.springframework.web.bind.annotation.*;
 @Controller
 @RequestMapping("/design")
 @SessionAttributes("order")
+@SuppressWarnings("java:S3753") // setComplede görs i OrderController
 class DesignController {
 
   private final TacoService tacoService;
@@ -29,7 +30,7 @@ class DesignController {
 
   @ModelAttribute(name = "order")
   Order order(Model model) {
-    return new Order();
+    return Order.builder().ccNumber("5555555555554444").build(); // simplify usage
   }
 
   @ModelAttribute(name = "taco")
