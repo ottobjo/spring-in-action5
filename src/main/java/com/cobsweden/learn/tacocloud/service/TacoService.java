@@ -1,22 +1,23 @@
 package com.cobsweden.learn.tacocloud.service;
 
-import com.cobsweden.learn.tacocloud.db.IngredientRepository;
-import com.cobsweden.learn.tacocloud.db.OrderRepository;
-import com.cobsweden.learn.tacocloud.db.TacoRepository;
+import com.cobsweden.learn.tacocloud.jpa.IngredientRepositoryJpa;
+import com.cobsweden.learn.tacocloud.jpa.OrderRepositoryJpa;
+import com.cobsweden.learn.tacocloud.jpa.TacoRepositoryJpa;
 import com.cobsweden.learn.tacocloud.model.Ingredients;
 import com.cobsweden.learn.tacocloud.model.Order;
 import com.cobsweden.learn.tacocloud.model.Taco;
 import org.springframework.stereotype.Service;
 
+
 @Service
 public class TacoService {
 
-  private final IngredientRepository ingredientRepository;
-  private final TacoRepository tacoRepository;
+  private final IngredientRepositoryJpa ingredientRepository;
+  private final TacoRepositoryJpa tacoRepository;
 
-  private final OrderRepository orderRepository;
+  private final OrderRepositoryJpa orderRepository;
 
-  public TacoService(IngredientRepository ingredientRepository, TacoRepository tacoRepository, OrderRepository orderRepository) {
+  public TacoService(IngredientRepositoryJpa ingredientRepository, TacoRepositoryJpa tacoRepository, OrderRepositoryJpa orderRepository) {
     this.ingredientRepository = ingredientRepository;
     this.tacoRepository = tacoRepository;
     this.orderRepository = orderRepository;
