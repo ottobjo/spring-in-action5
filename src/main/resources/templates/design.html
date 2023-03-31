@@ -12,7 +12,7 @@
 <img th:src="@{/images/TacoCloud.png}" alt="site logotype"/>
 
 <!--/*@thymesVar id="taco" type="com.cobsweden.learn.tacocloud.model.Taco"*/-->
-<form method="post" th:object="${taco}">
+<form method="post" th:action="@{/design}" th:object="${taco}">
 
   <div class="grid">
 
