@@ -34,6 +34,8 @@ public class SecurityConfiguration {
         .authenticated())
         .formLogin();
 
+    http.csrf().disable();
+    http.headers().frameOptions().disable();
     return http.build();
   }
 }
