@@ -13,11 +13,11 @@ import javax.sql.DataSource;
 
 
 @Configuration
-public class SecurityConfiguration {
+class SecurityConfiguration {
 
   @Bean
   @SuppressWarnings("java:S1874") // is acceptable for demos and getting started
-  public UserDetailsManager users(DataSource dataSource) {
+  UserDetailsManager users(DataSource dataSource) {
     UserDetails user = User.withDefaultPasswordEncoder()
         .username("user")
         .password("password")
@@ -29,13 +29,17 @@ public class SecurityConfiguration {
   }
 
   @Bean
-  public SecurityFilterChain filterChain(HttpSecurity http) throws Exception {
-    http.authorizeHttpRequests(authz -> authz.anyRequest()
-        .authenticated())
-        .formLogin();
+  SecurityFilterChain filterChain(HttpSecurity http) throws Exception {
+    http.authorizeHttpRequests(auth -> auth
+            .requestMatchers("/design/**", "/order/**").authenticated()
+            .requestMatchers("/images/**", "/styles.css").permitAll()
+            .anyRequest().permitAll())         // test config, should be denyAll()
+        .formLogin()
 
-    http.csrf().disable();
-    http.headers().frameOptions().disable();
+        .and()
+        .csrf().disable()                      // test config allowing external access to H2 console
+        .headers().frameOptions().disable()    //
+    ;
     return http.build();
   }
 }
